@@ -1,0 +1,17 @@
+$theme-colors: (
+  primary: #1e2662,
+  secondary: #00845f,
+  tertiary: red,
+  white: #ffff,
+  dark: #000,
+  danger: red,
+  success: #268a16,
+);
+
+
+
+//  .theme {
+//   @each $name, $color in $colors {
+//     #{$name}: nth($color, 1);
+//   }
+// }

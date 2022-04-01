@@ -1,0 +1,44 @@
+
+$main-background:#f5eeee;
+* {
+  -webkit-transition: margin-left 0.2s ease-in-out;
+  -moz-transition: margin-left 0.2s ease-in-out;
+  -ms-transition: margin-left 0.2s ease-in-out;
+  -o-transition: margin-left 0.2s ease-in-out;
+  transition: margin-left 0.2s ease-in-out;
+}
+.main-container {
+  margin-top: 10rem;
+  margin-left: 235px;
+  // padding: 10px;
+  -ms-overflow-x: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--main-background);
+  height: 100%;
+  // min-height: 100vh;
+}
+.collapsed {
+  margin-left: 60px;
+}
+@media screen and (max-width: 992px) {
+  .main-container {
+    margin-left: 0px !important;
+  }
+}
+@media print {
+  .main-container {
+    margin-top: 0px !important;
+    margin-left: 0px !important;
+  }
+}
+.custom-margin{
+  margin-top: 10rem;
+}
+@media (max-width:425px){
+  .main-container{
+    margin-left: 32px !important;
+  }
+}

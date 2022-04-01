@@ -1,0 +1,50 @@
+<nav class="sidebar" [ngClass]="{ sidebarPushRight: isActive, collapsed: collapsed }">
+  <div class="py-1 c-pointer text-right responsive-menu" [ngClass]="{ collapsed: collapsed }" (click)="toggleCollapsed()">
+    <i class="fa fa-fw fa-lg fa-angle-double-{{ collapsed ? 'right' : 'left' }} font-weight-bold"></i>&nbsp;
+    <!-- <span>{{ collapsed ? 'Oen' : 'Close' }} </span> -->
+  </div>
+  <div class="list-group">
+    <!-- <app-menu-item  *ngFor="let menuItem of menuItems" [menuItem]="menuItem"  (checkActive)="toggleCollapsed()"></app-menu-item> -->
+    <div class="" *ngFor="let menuItem of menuItems">
+      <a [routerLink]="[menuItem.path]" [routerLinkActive]="['router-link-active']"
+        [routerLinkActiveOptions]="{ exact: true }" container="body" placement="right" tooltipClass="my-custom-class"
+        class="list-group-item" (click)="menuItem.collapseItem = !menuItem.collapseItem"
+        *ngIf="menuItem.items.length == 0; else elseBlock" (click)="gotoTop()">
+        <!-- <i class="fa {{ menuItem.icon }}"></i>&nbsp; -->
+        <span>{{ menuItem.title }}</span>
+      </a>
+      <ng-template #elseBlock>
+        <a [routerLink]="[menuItem.path]" [routerLinkActive]="['router-link-active']"
+          [routerLinkActiveOptions]="{ exact: true }" container="body" (click)="collapse.toggle()"
+          [attr.aria-expanded]="menuItem.collapseItem" placement="right" tooltipClass="my-custom-class"
+          class="list-group-item" (click)="gotoTop()">
+          <div class="d-flex justify-content-between">
+            <div class="">
+              <!-- <i class="fa {{ menuItem.icon }}"></i>&nbsp; -->
+              <span>{{ menuItem.title }} </span>
+            </div>
+            <div class="">
+              <i class="fa fa-plus-circle text-white" aria-hidden="true" *ngIf="menuItem.collapseItem"></i>
+              <i class="fa fa-minus-circle text-white" aria-hidden="true" *ngIf="!menuItem.collapseItem"></i>
+            </div>
+          </div>
+        </a>
+      </ng-template>
+
+      <div #collapse="ngbCollapse" [(ngbCollapse)]="menuItem.collapseItem">
+        <div *ngIf="menuItem.items.length > 0">
+          <div class="pl-3" *ngFor="let child of menuItem.items">
+            <a [routerLink]="[child.path]" [routerLinkActive]="['router-link-active1']"
+              [routerLinkActiveOptions]="{ exact: true }" container="body" placement="right"
+              tooltipClass="my-custom-class" class="list-group-item" (click)="child.collapseItem = !child.collapseItem"
+              (click)="gotoTop()">
+              <!--   [queryParams]="{ pageIndex :1}" <i class="fa {{ child.icon }}"></i>&nbsp; -->
+              <span>{{ child.title }}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</nav>

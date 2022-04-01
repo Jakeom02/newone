@@ -1,0 +1,18 @@
+.header-page {
+  display: block;
+  background-color: #eaebf3;
+  position: fixed;
+  left: 0;
+  top: 70px;
+  width: 100%;
+  padding: 6px 0;
+  color: black;
+  text-align: center;
+  z-index: 998;
+  .divider-line {
+    height: 21px;
+    width: 100%;
+    background: #00845f;
+    box-shadow: -3px 7px 12px #3ddfb1 inset;
+  }
+}
